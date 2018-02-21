@@ -1,0 +1,25 @@
+<div class="container">
+  <h1><%= @restaurant.name %></h1>
+  <p><%= @restaurant.category.capitalize %></p>
+  <p><%= @restaurant.address %></p>
+  <p><i class="fa fa-phone"></i> <%= @restaurant.phone_number %></p>
+  <h2>Reviews</h2>
+  <ul class="list-group">
+    <% @restaurant.reviews.each do |elt| %>
+      <li class="list-group-item">
+        <h4>
+          <% elt.rating.times do %>
+            <i class="fa fa-star"></i>
+          <% end %>
+        </h4>
+        <p><%= elt.content %></p>
+      </li>
+    <% end %>
+  </ul>
+
+
+  <%= link_to "Write review", reviews_new_path(@restaurant), class: "btn btn-primary" %>
+  <%= link_to "Back", restaurants_path, class: "btn btn-primary" %>
+</div>
+
+
